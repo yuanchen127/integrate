@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
-@RequestMapping("/test")
-public class TestController {
+@RequestMapping("/hello")
+public class HelloController {
     private AtomicInteger count = new AtomicInteger(0);
 
     @RequestMapping("sleep")
