@@ -8,12 +8,17 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-@Table("tb_account")
-public class Account {
+@Table("tb_record")
+public class PushLog {
+
     @Id(keyType = KeyType.Auto)
     private Long id;
-    private String userName;
-//    private Integer age;
-    private Date birthday;
-}
 
+    private String param;
+
+    private String method;
+
+    private String clazz;
+
+    private Date createTime;
+}

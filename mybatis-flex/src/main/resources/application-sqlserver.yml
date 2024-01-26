@@ -1,0 +1,10 @@
+spring:
+    datasource:
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        url: jdbc:sqlserver://localhost;DatabaseName=integrate
+        username: sa
+        password: 123qwe,.
+mybatis-plus:
+    global-config:
+        db-config:
+            db-type: sqlserver

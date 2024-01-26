@@ -1,0 +1,14 @@
+spring:
+    datasource:
+        url: jdbc:postgresql://localhost:15433/postgres
+        username: postgres
+        password: password
+mybatis-plus:
+    configuration:
+        cache-enabled: true
+        use-generated-keys: true
+        default-executor-type: REUSE
+        use-actual-param-name: true
+    global-config:
+        db-config:
+            db-type: postgres

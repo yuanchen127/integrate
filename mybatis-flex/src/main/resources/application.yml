@@ -1,12 +1,12 @@
 spring:
-    datasource:
-        url: jdbc:mysql://localhost:3306/mybatis_flex?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&tinyInt1isBit=false
-        username: root
-        password: 123456
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        type: com.alibaba.druid.pool.DruidDataSource
+    application:
+        name: mybatis-flex
+    profiles:
+        active: sqlserver
 server:
     port: 10004
+    servlet:
+        context-path: /flex
 eureka:
     client:
         service-url:
