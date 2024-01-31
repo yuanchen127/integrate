@@ -3,15 +3,16 @@ package org.ike.integrate.common.aops;
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.*;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.ike.integrate.common.annotations.RecordLog;
 import org.ike.integrate.entity.PushLog;
 import org.ike.integrate.mapper.IPushLogMapper;
-import org.ike.integrate.service.RecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.util.Date;
 import java.util.UUID;
 
@@ -43,7 +44,7 @@ public class RecordAspect {
 
 
         PushLog log = new PushLog();
-        log.setId(UUID.randomUUID().node());
+        log.setId(UUID.randomUUID().hashCode());
         log.setClazz(beanClass.getName());
         log.setParam(null==param? null: JSON.toJSONString(param));
         log.setMethod(name);

@@ -12,7 +12,7 @@ import java.util.Date;
 public class PushLog {
 
     @Id(keyType = KeyType.Auto)
-    private Long id;
+    private Integer id;
 
     private String param;
 
