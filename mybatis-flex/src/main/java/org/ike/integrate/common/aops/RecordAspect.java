@@ -50,7 +50,7 @@ public class RecordAspect {
         log.setMethod(name);
         log.setCreateTime(new Date());
 
-        iPushLogMapper.insert(log);
+        iPushLogMapper.insertWithPk(log);
         RecordAspect.log.info("before recording");
     }
 
