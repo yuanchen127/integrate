@@ -15,6 +15,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <neo4j.ogm.version>3.2.21</neo4j.ogm.version>
   </properties>
 
   <dependencies>
@@ -33,24 +34,22 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-data-neo4j</artifactId>
-      <version>2.2.2.RELEASE</version>
-<!--      <exclusions>-->
-<!--        <exclusion>-->
-<!--          <groupId>org.neo4j.driver</groupId>-->
-<!--          <artifactId>neo4j-java-driver</artifactId>-->
-<!--        </exclusion>-->
-<!--      </exclusions>-->
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.neo4j.driver</groupId>-->
-<!--      <artifactId>neo4j-java-driver</artifactId>-->
-<!--      <version>4.2.1</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.neo4j</groupId>-->
-<!--      <artifactId>neo4j-jdbc-bolt</artifactId>-->
-<!--      <version>5.0.0</version>-->
-<!--    </dependency>-->
+    <dependency>
+      <groupId>org.neo4j</groupId>
+      <artifactId>neo4j-ogm-core</artifactId>
+      <version>${neo4j.ogm.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.neo4j</groupId>
+      <artifactId>neo4j-ogm-api</artifactId>
+      <version>${neo4j.ogm.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.neo4j</groupId>
+      <artifactId>neo4j-ogm-bolt-driver</artifactId>
+      <version>${neo4j.ogm.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
