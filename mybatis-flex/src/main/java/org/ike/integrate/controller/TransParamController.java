@@ -1,7 +1,7 @@
 package org.ike.integrate.controller;
 
-import org.ike.integrate.common.transdata.AbstractTransParam;
-import org.ike.integrate.common.transdata.TransDataService;
+import org.ike.integrate.slot.transdata.AbstractTransParam;
+import org.ike.integrate.slot.transdata.TransDataService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

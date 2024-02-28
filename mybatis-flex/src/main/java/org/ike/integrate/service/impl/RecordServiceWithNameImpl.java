@@ -10,28 +10,26 @@ import org.springframework.stereotype.Service;
 import java.util.Map;
 
 @Slf4j
-@Service("recordService")
-public class RecordServiceImpl implements RecordService, SlotService<Map<String, String>, RecordAbstractSlotReturn> {
-
-//    @SlotRecord
+@Service("recordParamWithName")
+public class RecordServiceWithNameImpl implements RecordService, SlotService<Map<String, String>, RecordAbstractSlotReturn> {
+    @Override
     public boolean record() {
-        log.info("recorded");
         return false;
     }
 
-
     @Override
     public boolean record(Map<String, String> param) {
-
-        return true;
+        log.warn("recordParamWithName, param:{}", param);
+        return false;
     }
 
     @SlotRecord
     @Override
     public RecordAbstractSlotReturn pushData(Map<String, String> param) {
-        log.info("trans param");
+        log.warn("recordParamWithName, param:{}", param);
         RecordAbstractSlotReturn result = new RecordAbstractSlotReturn();
         result.setSuccess(0 == Integer.parseInt(param.get("count")) % 2);
         return result;
     }
 }
+

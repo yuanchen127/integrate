@@ -1,4 +1,4 @@
-package org.ike.integrate.common.transdata.function;
+package org.ike.integrate.slot.transdata.function;
 
 @FunctionalInterface
 public interface BusinessFillFunction<T> {

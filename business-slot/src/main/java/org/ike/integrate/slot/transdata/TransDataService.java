@@ -1,6 +1,4 @@
-package org.ike.integrate.common.transdata;
-
-import java.util.function.Supplier;
+package org.ike.integrate.slot.transdata;
 
 public interface TransDataService {
 

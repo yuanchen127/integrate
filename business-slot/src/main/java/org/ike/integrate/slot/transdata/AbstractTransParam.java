@@ -1,4 +1,4 @@
-package org.ike.integrate.common.transdata;
+package org.ike.integrate.slot.transdata;
 
 public abstract class AbstractTransParam<T> {
 

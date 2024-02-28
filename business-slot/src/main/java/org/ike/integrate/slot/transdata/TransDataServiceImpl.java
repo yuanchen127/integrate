@@ -1,4 +1,4 @@
-package org.ike.integrate.common.transdata;
+package org.ike.integrate.slot.transdata;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

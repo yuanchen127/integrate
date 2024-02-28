@@ -16,9 +16,9 @@ public class PushLog {
 
     private String param;
 
-    private String method;
+//    private String paramClazz;
 
-    private String clazz;
+    private String declareClazz;
 
     private Date createTime;
 }

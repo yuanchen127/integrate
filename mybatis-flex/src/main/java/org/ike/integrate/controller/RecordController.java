@@ -1,10 +1,8 @@
 package org.ike.integrate.controller;
 
-import org.ike.integrate.service.RecordService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.ike.integrate.slot.common.SlotService;
+import org.ike.integrate.mapper.IPushLogMapper;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -13,15 +11,37 @@ import java.util.HashMap;
 @RequestMapping("record")
 public class RecordController {
 
+    @Resource(name = "recordService")
+    private SlotService slotService;
+
     @Resource
-    private RecordService recordService;
+    private IPushLogMapper iPushLogMapper;
+
+    @Resource(name = "recordParamWithName")
+    private SlotService slotServiceWithName;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.POST)
     public boolean record(@PathVariable("id") int id) {
-        recordService.record();
-        recordService.record(new HashMap<String, String>(1) {{
+//        slotService.record();
+        slotService.pushData(new HashMap<String, String>(1) {{
             put("INT", String.valueOf(id));
         }});
         return true;
+    }
+
+    @PostMapping(value = "name/{id}")
+    public boolean recordWithServiceName(@PathVariable("id") int id) {
+        slotServiceWithName.pushData(new HashMap<String, String>(){{
+            put("count", String.valueOf(id));
+            put("serviceName", "true");
+        }});
+        return false;
+    }
+
+    @PostMapping(value = "push/{id}")
+    public boolean rePushData(@PathVariable("id") Long id) {
+
+
+        return false;
     }
 }
