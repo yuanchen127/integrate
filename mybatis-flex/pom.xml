@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>mybatis-flex</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -19,9 +20,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.ike.his</groupId>
+            <groupId>org.ike.integrate</groupId>
             <artifactId>business-slot</artifactId>
-            <version>1.0-SNAPSHOT</version>
+<!--            <version>1.0-SNAPSHOT</version>-->
         </dependency>
 
         <dependency>
@@ -59,11 +60,11 @@
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>sqljdbc42</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.springframework</groupId>-->
-<!--            <artifactId>spring-jdbc</artifactId>-->
-<!--            <version>5.3.21</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>5.3.21</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-logging</artifactId>

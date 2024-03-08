@@ -2,7 +2,7 @@ package org.ike.neo4j.ribbon.consumer.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.ike.neo4j.ribbon.consumer.common.AsyncResponse;
-import org.ike.neo4j.ribbon.consumer.service.AsyncService;
+import org.ike.neo4j.ribbon.consumer.service.AsyncRibbonService;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 @Service
 @Slf4j
-public class AsyncServiceImpl implements AsyncService {
+public class AsyncRibbonServiceImpl implements AsyncRibbonService {
     @Async
     @Override
     public CompletableFuture<AsyncResponse> test(int count, Date start) throws InterruptedException {

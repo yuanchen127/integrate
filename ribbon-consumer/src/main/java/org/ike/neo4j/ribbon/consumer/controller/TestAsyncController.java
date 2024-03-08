@@ -2,7 +2,7 @@ package org.ike.neo4j.ribbon.consumer.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.ike.neo4j.ribbon.consumer.common.AsyncResponse;
-import org.ike.neo4j.ribbon.consumer.service.AsyncService;
+import org.ike.neo4j.ribbon.consumer.service.AsyncRibbonService;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +18,7 @@ import java.util.concurrent.ExecutionException;
 public class TestAsyncController {
 
     @Resource
-    private AsyncService asyncService;
+    private AsyncRibbonService asyncRibbonService;
 
     @RequestMapping("{count}/{time_out}")
     public boolean test(@PathVariable(value = "count") int count, @PathVariable(value = "time_out") long timeOut) throws InterruptedException, ExecutionException {
@@ -29,7 +29,7 @@ public class TestAsyncController {
         while (count > 0) {
             int times = var_count - count;
             log.info("已第{}次触发调用异步方法", times);
-            CompletableFuture<AsyncResponse> result = asyncService.test(times, new Date());
+            CompletableFuture<AsyncResponse> result = asyncRibbonService.test(times, new Date());
             AsyncResponse response = result.get();
             long internal = response.getInternal();
             if(timeOut<=0 || internal>timeOut)

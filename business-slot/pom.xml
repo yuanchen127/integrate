@@ -7,7 +7,6 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.ike.his</groupId>
     <artifactId>business-slot</artifactId>
     <packaging>jar</packaging>
 
