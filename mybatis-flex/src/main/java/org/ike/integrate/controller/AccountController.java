@@ -1,25 +1,14 @@
 package org.ike.integrate.controller;
 
-import com.microsoft.sqlserver.jdbc.SQLServerBulkCopy;
-import com.microsoft.sqlserver.jdbc.SQLServerException;
-import com.mybatisflex.annotation.Table;
 import com.mybatisflex.core.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
-import org.bouncycastle.crypto.ec.ECElGamalDecryptor;
-import org.ike.integrate.common.exception.ServiceException;
 import org.ike.integrate.entity.Account;
-import org.ike.integrate.entity.TableColumnSchema;
 import org.ike.integrate.mapper.IAccountMapper;
 import org.ike.integrate.repository.BinaryTruncationFieldRepo;
-import org.springframework.beans.BeanUtils;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 @Slf4j
 @RestController
@@ -54,6 +43,16 @@ public class AccountController {
     public boolean insert(@RequestBody Account account) {
         boolean success = false;
         return 0 < IAccountMapper.insertWithPk(account);
+    }
+
+    /**
+     * 批量插入Account数据
+     * @param account
+     * @return
+     */
+    @PostMapping("insert/batch")
+    public boolean insertBatch(@RequestBody List<Account> account) {
+        return 0 < IAccountMapper.insertBatch(account);
     }
 
     @PostMapping("update")

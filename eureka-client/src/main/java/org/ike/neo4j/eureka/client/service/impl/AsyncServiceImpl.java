@@ -26,7 +26,6 @@ public class AsyncServiceImpl implements AsyncService {
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
-
             }
 
 

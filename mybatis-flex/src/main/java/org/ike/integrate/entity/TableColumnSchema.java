@@ -33,7 +33,7 @@ public class TableColumnSchema {
         //检测字符串类型的数据的内容长度
         if (dataType.getType().contains("char")) {
             if (param.length() > maxCharLength) {
-                String msg = String.format("字段:%s 超长, 参数:%s", columnName, param);
+                String msg = String.format("插入参数值[%s]时,违反数据库字段[%s]最大长度[%s]约束", param, columnName, maxCharLength);
                 throw new BinaryTruncationException(msg);
             }
         }

@@ -7,6 +7,7 @@ import org.ike.integrate.slot.annotations.SlotRecord;
 import org.ike.integrate.slot.common.SlotService;
 import org.springframework.stereotype.Service;
 
+import java.io.Serializable;
 import java.util.Map;
 
 @Slf4j
@@ -33,5 +34,10 @@ public class RecordServiceImpl implements RecordService, SlotService<Map<String,
         RecordAbstractSlotReturn result = new RecordAbstractSlotReturn();
         result.setSuccess(0 == Integer.parseInt(param.get("count")) % 2);
         return result;
+    }
+
+    @Override
+    public RecordAbstractSlotReturn pushData(Serializable id, Map<String, String> param) {
+        return null;
     }
 }
