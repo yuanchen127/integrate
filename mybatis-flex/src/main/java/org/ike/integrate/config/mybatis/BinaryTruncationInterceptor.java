@@ -55,8 +55,8 @@ public class BinaryTruncationInterceptor implements Interceptor {
                 tmpMap.forEach((k, v) -> {
                     try {
                         v.validate(entity);
-                    } catch (Exception ex) {
-                        throw new RuntimeException(ex);
+                    } catch (Exception e1) {
+                        throw new RuntimeException(e1);
                     }
                 });
             }
