@@ -7,7 +7,7 @@ import org.ike.integrate.repository.BusinessSlotRecordRepo;
 import org.ike.integrate.slot.common.Page;
 import org.ike.integrate.slot.common.SlotRecordPoint;
 import org.ike.integrate.slot.req.PageSearchReq;
-import org.ike.integrate.transfer.PushLogTransfer;
+import org.ike.integrate.build.PushLogBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -30,6 +30,7 @@ public class BusinessSlotRecordRepoImpl implements BusinessSlotRecordRepo {
         logInfo.setParam(point.getParam());
         logInfo.setCreateTime(new Date());
         logInfo.setId(UUID.randomUUID().hashCode());
+        logInfo.setEventId(point.getEventId());
         return 0 < iPushLogMapper.insertWithPk(logInfo);
     }
 
@@ -41,7 +42,7 @@ public class BusinessSlotRecordRepoImpl implements BusinessSlotRecordRepo {
     @Override
     public List<SlotRecordPoint> listRecord() {
         List<PushLog> list = iPushLogMapper.selectListByQuery(new QueryWrapper());
-        return PushLogTransfer.toRecordPointList(list);
+        return PushLogBuilder.toRecordPointList(list);
     }
 
     @Override
@@ -63,7 +64,7 @@ public class BusinessSlotRecordRepoImpl implements BusinessSlotRecordRepo {
         Page<SlotRecordPoint> page = new Page<SlotRecordPoint>();
         page.setCurrent(result.getPageNumber());
         page.setSize(result.getPageSize());
-        page.setData(PushLogTransfer.toRecordPointList(result.getRecords()));
+        page.setData(PushLogBuilder.toRecordPointList(result.getRecords()));
         page.setTotal(result.getTotalRow());
         return page;
     }
@@ -71,6 +72,6 @@ public class BusinessSlotRecordRepoImpl implements BusinessSlotRecordRepo {
     @Override
     public SlotRecordPoint getRecord(Serializable id) {
         PushLog record = iPushLogMapper.selectOneById(id);
-        return PushLogTransfer.toRecordPoint(record);
+        return PushLogBuilder.toRecordPoint(record);
     }
 }

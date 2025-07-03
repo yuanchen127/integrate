@@ -3,7 +3,7 @@ package org.ike.integrate.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.ike.integrate.common.res.RecordAbstractSlotReturn;
 import org.ike.integrate.service.RecordService;
-import org.ike.integrate.slot.annotations.SlotRecord;
+import org.ike.integrate.slot.common.SlotEvent;
 import org.ike.integrate.slot.common.SlotService;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,12 @@ public class RecordServiceImpl implements RecordService, SlotService<Map<String,
         return true;
     }
 
-    @SlotRecord
+    @Override
+    public SlotEvent registerEvent() {
+        return new SlotEvent(2, "医嘱取消");
+    }
+
+//    @SlotRecord
     @Override
     public RecordAbstractSlotReturn pushData(Map<String, String> param) {
         log.info("trans param");

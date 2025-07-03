@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectProvider;
 import org.ike.integrate.entity.Account;
 import org.ike.integrate.provider.AccountProvider;
-import org.ike.integrate.provider.postgres.AccountProvider_pg;
+import org.ike.integrate.provider.postgresql.AccountProvider_pg;
 
 import java.util.List;
 

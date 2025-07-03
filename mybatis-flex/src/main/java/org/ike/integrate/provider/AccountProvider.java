@@ -6,7 +6,7 @@ public class AccountProvider {
 
     public String getById(String id) {
         return new SQL() {{
-            SELECT("user_name");
+            SELECT("*");
             FROM("integrate..tb_account");
             WHERE("id = #{id}");
         }}.toString();

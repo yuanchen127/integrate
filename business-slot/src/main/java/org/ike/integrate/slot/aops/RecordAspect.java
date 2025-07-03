@@ -7,6 +7,7 @@ import org.aspectj.lang.annotation.*;
 import org.ike.integrate.slot.common.AbstractSlotReturn;
 import org.ike.integrate.slot.common.SlotContext;
 import org.ike.integrate.slot.common.SlotRecordPoint;
+import org.ike.integrate.slot.common.SlotService;
 import org.ike.integrate.slot.repository.SlotRecordRepo;
 import org.springframework.stereotype.Component;
 
@@ -57,7 +58,7 @@ public class RecordAspect {
      */
     private boolean isRetry(JoinPoint point) {
         Object[] args = point.getArgs();
-        if (null != args && args.length > 0) {
+        if (null != args && args.length > 1) {
             return null != args[0];
         }
         return false;
@@ -67,11 +68,18 @@ public class RecordAspect {
         Object[] args = point.getArgs();
         Serializable id = null;
         Object param = null;
-        if (null != args && args.length > 0) {
+        if (null == args) {
+            return false;
+        }
+        if (args.length > 1) {
             id = (Serializable) args[0];
             param = args[1];
-            log.info("record param:{}", JSON.toJSONString(param));
+        } else {
+            param = args[0];
         }
+
+        int eventId = ((SlotService) point.getTarget()).registerEvent().getId();
+        log.info("record param:{}", JSON.toJSONString(param));
         Class superClazz = point.getThis().getClass().getSuperclass();
 //        Class<?> beanClass = (superClazz.getInterfaces())[0];
 //        String declareTypeName = point.getSignature().getDeclaringTypeName();
@@ -80,6 +88,7 @@ public class RecordAspect {
         SlotRecordPoint msg = new SlotRecordPoint();
         msg.setBeanClassName(superClazz.getName());
         msg.setParam(null==param? null: JSON.toJSONString(param));
+        msg.setEventId(eventId);
         return slotRecordRepo.saveRecord(msg);
     }
 

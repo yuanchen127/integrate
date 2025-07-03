@@ -1,6 +1,6 @@
 spring:
     datasource:
-        url: jdbc:postgresql://localhost:15433/postgres
+        url: jdbc:postgresql://localhost:15433/postgres?reWriteBatchedInserts=true&useServerPrepStmts=true
         username: postgres
         password: password
 mybatis-plus:
@@ -11,4 +11,4 @@ mybatis-plus:
         use-actual-param-name: true
     global-config:
         db-config:
-            db-type: postgres
+            db-type: postgresql

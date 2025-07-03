@@ -24,7 +24,7 @@ public class RecordController {
     public boolean record(@PathVariable("id") int id) {
 //        slotService.record();
         slotService.pushData(new HashMap<String, String>(1) {{
-            put("INT", String.valueOf(id));
+            put("count", String.valueOf(id));
         }});
         return true;
     }

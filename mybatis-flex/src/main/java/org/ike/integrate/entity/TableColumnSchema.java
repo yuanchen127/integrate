@@ -48,7 +48,12 @@ public class TableColumnSchema {
         Object result = null;
 
         try {
-            Method method = tableObj.getClass().getMethod("get".concat(StringUtils.capitalize(property)), null);
+            Method method;
+            if (DataType.bit.equals(dataType)) {
+                method = tableObj.getClass().getMethod("is".concat(StringUtils.capitalize(property)), null);
+            } else {
+                method = tableObj.getClass().getMethod("get".concat(StringUtils.capitalize(property)), null);
+            }
             result = method.invoke(tableObj, null);
         } catch (NoSuchMethodException e){
             log.warn("Class:{}中无属性:{}", tableObj.getClass(), property);

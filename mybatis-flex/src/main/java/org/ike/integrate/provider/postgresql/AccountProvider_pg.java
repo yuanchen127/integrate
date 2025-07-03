@@ -1,6 +1,5 @@
-package org.ike.integrate.provider.postgres;
+package org.ike.integrate.provider.postgresql;
 
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.jdbc.SQL;
 import org.ike.integrate.provider.AccountProvider;
 
@@ -9,7 +8,7 @@ public class AccountProvider_pg extends AccountProvider{
     @Override
     public String getById(String id) {
         return new SQL() {{
-            SELECT("user_name");
+            SELECT("id, RATIO");
             FROM("postgres.public.tb_account");
             WHERE("id = #{id}");
         }}.toString();

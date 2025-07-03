@@ -3,6 +3,7 @@ package org.ike.integrate.service.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.ike.integrate.common.res.RecordAbstractSlotReturn;
 import org.ike.integrate.service.RecordService;
+import org.ike.integrate.slot.common.SlotEvent;
 import org.ike.integrate.slot.common.SlotService;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,11 @@ public class RecordServiceWithNameImpl implements RecordService, SlotService<Map
     public boolean record(Map<String, String> param) {
         log.warn("recordParamWithName, param:{}", param);
         return false;
+    }
+
+    @Override
+    public SlotEvent registerEvent() {
+        return new SlotEvent(1, "医嘱下达");
     }
 
     @Override

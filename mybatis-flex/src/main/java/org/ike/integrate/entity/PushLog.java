@@ -21,4 +21,6 @@ public class PushLog {
     private String declareClazz;
 
     private Date createTime;
+
+    private Integer eventId;
 }

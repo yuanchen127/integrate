@@ -21,6 +21,11 @@ public class SlotRecordPoint {
     private String param;
 
     /**
+     * 业务事件ID
+     */
+    private Integer eventId;
+
+    /**
      * 构造函数
      */
     public SlotRecordPoint() {

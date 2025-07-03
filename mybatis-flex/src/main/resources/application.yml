@@ -2,7 +2,8 @@ spring:
     application:
         name: mybatis-flex
     profiles:
-        active: sqlserver
+        active: pg
+#        active: sqlserver
 server:
     port: 10004
     servlet:
@@ -10,4 +11,4 @@ server:
 eureka:
     client:
         service-url:
-            defaultZone: http://localhost:10000/eureka
+              defaultZone: https://localhost:10000/eureka/

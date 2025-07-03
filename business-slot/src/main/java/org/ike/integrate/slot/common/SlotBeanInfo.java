@@ -13,4 +13,6 @@ public class SlotBeanInfo {
 
     private Class paramClass;
 
+    private SlotEvent event;
+
 }

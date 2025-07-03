@@ -3,18 +3,11 @@ package org.ike.integrate.config.mybatis;
 import com.microsoft.sqlserver.jdbc.SQLServerException;
 import com.mybatisflex.annotation.Table;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.BoundSql;
 import org.apache.ibatis.mapping.MappedStatement;
-import org.apache.ibatis.plugin.Interceptor;
-import org.apache.ibatis.plugin.Intercepts;
 import org.apache.ibatis.plugin.Invocation;
-import org.apache.ibatis.plugin.Signature;
-import org.apache.ibatis.session.ResultHandler;
-import org.apache.ibatis.session.RowBounds;
 import org.ike.integrate.entity.TableColumnSchema;
 import org.ike.integrate.repository.BinaryTruncationFieldRepo;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Method;
@@ -23,17 +16,19 @@ import java.lang.reflect.Type;
 import java.util.Map;
 
 @Slf4j
-@Component
-@Intercepts({
-        @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
-        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})
-})
-public class BinaryTruncationInterceptor implements Interceptor {
+//@Component
+//@Intercepts({
+//        @Signature(type = Executor.class, method = "update", args = {MappedStatement.class, Object.class}),
+//        @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class})
+//})
+public class BinaryTruncationInterceptor
+//        implements Interceptor
+{
 
     @Resource
     private BinaryTruncationFieldRepo binaryTruncationFieldRepo;
 
-    @Override
+//    @Override
     public Object intercept(Invocation invocation) throws Throwable {
         Object target = invocation.getTarget();
         Object[] args = invocation.getArgs();
@@ -60,7 +55,7 @@ public class BinaryTruncationInterceptor implements Interceptor {
                     }
                 });
             }
-            log.warn("mybatis.interceptor: {}", e.getMessage());
+            log.warn("mybatis.interceptor: {}", e);
         }
 
         return process;
