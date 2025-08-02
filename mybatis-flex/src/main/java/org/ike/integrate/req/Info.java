@@ -3,6 +3,7 @@ package org.ike.integrate.req;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
+import org.ike.integrate.common.annotions.UpperCaseValue;
 
 @Data
 @Accessors(chain = true)
@@ -10,6 +11,7 @@ public class Info {
 
     private String id;
 
+    @UpperCaseValue
     private String name;
 
     private String cksmc;
