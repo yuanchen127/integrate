@@ -3,7 +3,6 @@ package org.ike.integrate.controller;
 import com.mybatisflex.core.BaseMapper;
 import com.mybatisflex.core.query.QueryWrapper;
 import com.mybatisflex.core.row.Db;
-import com.nlf.calendar.Lunar;
 import lombok.extern.slf4j.Slf4j;
 import org.ike.integrate.build.AccountBuilder;
 import org.ike.integrate.entity.Account;
@@ -16,27 +15,12 @@ import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Slf4j
 @RestController
 @RequestMapping("account")
 public class AccountController {
-
-    public static void main(String[] args) {
-        Date date = new Date();
-        Calendar instance = Calendar.getInstance();
-        instance.add(Calendar.DAY_OF_YEAR, 1);
-
-        Lunar lunar = new Lunar(instance.getTime());
-
-        String rs = lunar.getJieQi();
-        log.info("节气: {}", rs);
-        log.info("month:{}", instance.get(Calendar.MONTH));
-
-    }
 
     @Resource
     private IAccountMapper iAccountMapper;
@@ -161,8 +145,8 @@ public class AccountController {
             // 设置账户启用状态为true
             var.setEnable(0==i%2);
             // 设置账户比例为null
-//            var.setRatio(new BigDecimal("0.1").multiply(new BigDecimal(i)));
-            var.setRATIO(new BigDecimal("0.1").multiply(new BigDecimal(i)));
+            var.setRatio(new BigDecimal("0.1").multiply(new BigDecimal(i)));
+//            var.setRATIO(new BigDecimal("0.1").multiply(new BigDecimal(i)));
             // 将账户添加到列表中
             accoutList.add(var);
         }

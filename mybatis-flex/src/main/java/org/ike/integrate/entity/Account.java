@@ -7,6 +7,7 @@ import com.mybatisflex.annotation.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.ike.integrate.config.mybatis.typehandler.PostgresXmlTypeHandler;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -25,8 +26,12 @@ public class Account {
 
     private boolean enable;
 
-    @Column("RATIO")
-    private BigDecimal RATIO;
+	//    @Column("RATIO")
+	private BigDecimal ratio;
+
+	@Column(typeHandler = PostgresXmlTypeHandler.class)
+//	@Column(typeHandler = SQLServerXmlTypeHandler.class)
+	private String xdata;
 
 }
 

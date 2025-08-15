@@ -36,8 +36,8 @@ public class AccountControllerTest {
     public void testInsertLargeWithBulk() throws Exception {
         // Given
         List<Account> mockAccounts = Arrays.asList(
-                new Account("1", "user1", null, true, new BigDecimal("1.00")),
-                new Account("2", "user2", null, false, new BigDecimal("2.00"))
+            new Account("1", "user1", null, true, new BigDecimal("1.00"), "xdata1"),
+            new Account("2", "user2", null, false, new BigDecimal("2.00"), "xdata2")
         );
 
         when(accountService.insertBatchWithBulk(anyList())).thenReturn(true);

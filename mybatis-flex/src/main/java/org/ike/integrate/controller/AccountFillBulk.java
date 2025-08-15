@@ -14,8 +14,8 @@ public class AccountFillBulk implements FillSQLServerBulk<Account> {
         addColumn(rowSet, "id", resource.getId());
         addColumn(rowSet, "user_name", resource.getUserName());
         addColumn(rowSet, "birthday", resource.getBirthday());
-//        addColumn(rowSet, "ratio", resource.getRatio(),false,null);
-        addColumn(rowSet, "ratio", resource.getRATIO(),false,null);
+        addColumn(rowSet, "ratio", resource.getRatio(),false,null);
+//        addColumn(rowSet, "ratio", resource.getRATIO(),false,null);
         addColumn(rowSet, "enable", resource.isEnable() ? 1 : 0);
     }
 }

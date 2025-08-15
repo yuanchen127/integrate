@@ -16,8 +16,8 @@ public class AccountBuilder {
                 sb.append(CSVUtil.toCSV(account.getUserName())).append(",");
                 sb.append(CSVUtil.toCSV(account.getBirthday())).append(",");
                 sb.append(CSVUtil.toCSV(account.isEnable())).append(",");
-//                sb.append(CSVUtil.toCSV(account.getRatio()));
-                sb.append(CSVUtil.toCSV(account.getRATIO()));
+                sb.append(CSVUtil.toCSV(account.getRatio()));
+//                sb.append(CSVUtil.toCSV(account.getRATIO()));
                 sb.append("\n");
             }
         }
